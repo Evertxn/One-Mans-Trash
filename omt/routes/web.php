@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Auth::routes();
+
+Route::get('/', 'PagesController@index');
+
+Route::get('/about', 'PagesController@about');
+
+Route::get('/categories', 'PagesController@categories');
+
+Route::get('/help', 'PagesController@help');
+
+Route::get('/privacy', 'PagesController@privacy');
+
+Route::get('/account', 'PagesController@account');
