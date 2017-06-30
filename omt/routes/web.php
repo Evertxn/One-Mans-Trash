@@ -25,3 +25,5 @@ Route::get('/help', 'PagesController@help');
 Route::get('/privacy', 'PagesController@privacy');
 
 Route::get('/account', 'PagesController@account');
+
+Route::get('/home', 'HomeController@index')->name('home');
