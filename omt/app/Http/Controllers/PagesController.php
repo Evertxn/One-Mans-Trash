@@ -39,9 +39,9 @@ class PagesController extends Controller
 
     }
 
-    public function categories()
+    public function browse()
     {
-        return view('pages.categories');
+        return view('pages.browse');
 
     }
     /**
