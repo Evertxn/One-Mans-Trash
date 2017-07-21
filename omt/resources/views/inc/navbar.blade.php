@@ -12,9 +12,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
+                <li><a href="/posts">Browse</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/browse">Browse</a></li>
                 <li><a href="/help">Help</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/posts/create">Create Listing</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
