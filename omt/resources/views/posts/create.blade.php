@@ -4,7 +4,7 @@
 @section('content')
     <h1>Create Your Listing</h1>
 
-    {!! Form::open(['action'=>'PostsController@store','method'=>'POST']) !!}
+    {!! Form::open(['action'=>'PostsController@store','method'=>'POST', 'enctype' => 'multipart/data']) !!}
         <!-- Title Form -->
         <div class="form-group">
             {{Form::label('title','Title')}}
@@ -14,6 +14,9 @@
         <div class="form-group">
             {{Form::label('body','Body')}}
             {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Describe your item'])}}
+        </div>
+        <div class="form-group">
+            {{Form::file('cover_image')}}
         </div>
         {{Form::submit('Post',['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}

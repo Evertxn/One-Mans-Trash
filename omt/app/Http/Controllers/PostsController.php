@@ -8,6 +8,16 @@ use App\Post;
 class PostsController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => ['index','show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -17,7 +27,7 @@ class PostsController extends Controller
         //return Post::where('title', 'Post Two')->get();
         //$posts = Post::orderBy('title','desc')->get();
 
-        $posts = Post::orderBy('created_at  ','desc')->paginate(5);
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -48,6 +58,7 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Created!');
@@ -74,6 +85,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
+        //check for correct user
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized');
+        }
+
         return view('posts.edit')->with('post', $post);
     }
 
@@ -93,6 +110,12 @@ class PostsController extends Controller
 
         //create a post
         $post = Post::find($id);
+
+        //check for correct user
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized');
+        }
+
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->save();
@@ -109,6 +132,12 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        //check for correct user
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized');
+        }
+
         $post->delete();
         return redirect('/posts')->with('success','Your post has been deleted.');
     }
