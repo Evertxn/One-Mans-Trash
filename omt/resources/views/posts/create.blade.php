@@ -4,7 +4,7 @@
 @section('content')
     <h1>Create Your Listing</h1>
 
-    {!! Form::open(['action'=>'PostsController@store','method'=>'POST', 'enctype' => 'multipart/data']) !!}
+    {!! Form::open(['action'=>'PostsController@store','method'=>'POST', 'enctype' => 'multipart/form-data']) !!}
         <!-- Title Form -->
         <div class="form-group">
             {{Form::label('title','Title')}}

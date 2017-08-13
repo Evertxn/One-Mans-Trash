@@ -4,7 +4,7 @@
 @section('content')
     <h1>Edit Your Listing</h1>
 
-    {!! Form::open(['action'=>['PostsController@update',$post->id],'method'=>'POST']) !!}
+    {!! Form::open(['action'=>['PostsController@update',$post->id],'method'=>'POST','enctype' => 'multipart/form-data']) !!}
     <!-- Title Form -->
     <div class="form-group">
         {{Form::label('title','Title')}}
@@ -14,6 +14,9 @@
     <div class="form-group">
         {{Form::label('body','Body')}}
         {{Form::textarea('body',$post->body,['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Describe your item'])}}
+    </div>
+    <div class="form-group">
+        {{Form::file('cover_image')}}
     </div>
     {{Form::hidden('_method','PUT')}}
     {{Form::submit('Post',['class'=>'btn btn-primary'])}}
