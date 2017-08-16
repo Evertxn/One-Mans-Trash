@@ -24,7 +24,7 @@ Route::get('/help', 'PagesController@help');
 
 Route::get('/privacy', 'PagesController@privacy');
 
-Route::get('/account', 'PagesController@account');
+Route::get('/search', 'PagesController@geocode');
 
 
 Route::resource('posts', 'PostsController');

@@ -44,6 +44,11 @@ class PagesController extends Controller
         return view('pages.browse');
 
     }
+
+    public function geocode()
+    {
+        return view('pages.geocode');
+    }
     /**
      * Show the form for creating a new resource.
      *
